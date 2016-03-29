@@ -1,0 +1,25 @@
+{
+  "name": "projecteer",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.5.3",
+    "angular-animate": "~1.5.3",
+    "angular-resource": "~1.5.3",
+    "angular-cookies": "~1.5.3",
+    "angular-sanitize": "~1.5.3",
+    "angular-messages": "~1.5.3",
+    "angular-aria": "~1.5.3",
+    "angular-local-storage": "~0.2.7",
+    "angular-socket-io": "~0.7.0",
+    "angular-ui-router": "~0.2.18",
+    "angular-validation-match": "~1.7.1",
+    "bootstrap": "~3.3.6",
+    "bootstrap-social": "~4.12.0",
+    "font-awesome": "~4.5.0",
+    "jquery": "~2.2.2",
+    "lodash": "~4.6.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.3"
+  }
+}

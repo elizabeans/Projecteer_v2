@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="projecteer">
+<head>
+    <title>Projecteer</title>
+    <meta charset="utf-8" />
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/navbar.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div ui-view></div>
+
+    <!-- Libraries -->
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../lib/angular/angular.min.js"></script>
+    <script src="../lib/angular-resource/angular-resource.min.js"></script>
+    <script src="../lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="../lib/angular-animate/angular-animate.min.js"></script>
+    <script src="../lib/angular-aria/angular-aria.min.js"></script>
+    <script src="../lib/angular-messages/angular-messages.min.js"></script>
+
+    <!-- Application -->
+    <script src="app.module.js"></script>
+    <script src="app.ctrl.js"></script>
+    <script src="home/home.ctrl.js"></script>
+    <script src="dashboard/dashboard.ctrl.js"></script>
+    <script src="account/account.service.js"></script>
+    <script src="project/project.service.js"></script>
+    <script src="project/project.ctrl.js"></script>
+</body>
+</html>

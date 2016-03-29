@@ -1,0 +1,2 @@
+C:\Users\kaneh\OneDrive\Documents\Visual Studio 2015\Projects\Projecteer\Projecteer\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\kaneh\OneDrive\Documents\Visual Studio 2015\Projects\Projecteer\Projecteer\obj\Debug\Projecteer.njsprojResolveAssemblyReference.cache
