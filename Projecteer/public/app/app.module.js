@@ -7,7 +7,8 @@
 angular.module('projecteer')
     .value('ROOT_URL', 'http://localhost:1337');
 
-angular.module('projecteer').config(function ($stateProvider, $urlRouterProvider) {
+angular.module('projecteer').config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
+    $httpProvider.interceptors.push('AuthenticationInterceptor');
 
     $urlRouterProvider.otherwise('/home');
     

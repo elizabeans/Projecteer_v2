@@ -1,11 +1,11 @@
 ﻿angular.module('projecteer')
-    .factory('ProjectResource', [
+    .factory('ProjectService', [
         '$resource',
         'ROOT_URL',
         function ($resource, ROOT_URL) {
 
             var resource = $resource(
-                ROOT_URL + '/projects', {}, {
+                ROOT_URL + '/projecteerAPI/projects', {}, {
                     getProjects: {
                         method: 'GET',
                         isArray: true

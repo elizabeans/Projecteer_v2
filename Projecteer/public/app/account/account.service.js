@@ -41,8 +41,8 @@
                 
                 resource.login(user).$promise.then(function (resp) {
                     console.log(resp);
-                    that.currentUser.data = resp.data;
-                    deferred.resolve(resp.data);
+                    that.currentUser.user = resp.user;
+                    deferred.resolve(resp);
 
                 }).catch(function (err) {
                     deferred.reject(err);
