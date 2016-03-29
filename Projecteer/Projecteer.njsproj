@@ -31,9 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="models\account.js" />
-    <Compile Include="models\project.js" />
     <Compile Include="public\app\account\account.service.js" />
-    <Compile Include="public\app\account\authentication.interceptor.js" />
     <Compile Include="public\app\app.ctrl.js" />
     <Compile Include="public\app\app.module.js" />
     <Compile Include="public\app\dashboard\dashboard.ctrl.js" />
@@ -280,10 +278,9 @@
     <Compile Include="public\lib\lodash\vendor\underscore\test\utility.js" />
     <Compile Include="public\lib\lodash\vendor\underscore\underscore-min.js" />
     <Compile Include="public\lib\lodash\vendor\underscore\underscore.js" />
-    <Compile Include="routes\api.js" />
     <Compile Include="server.js" />
     <Compile Include="routes\index.js" />
-    <Compile Include="routes\account.js" />
+    <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
     <Content Include=".bowerrc" />
     <Content Include=".env" />

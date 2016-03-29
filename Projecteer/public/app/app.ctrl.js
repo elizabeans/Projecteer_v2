@@ -2,18 +2,14 @@
     .controller('AppController', [
     '$scope',
     '$state',
-    'localStorageService',
     'AccountService',
-    function ($scope, $state, localStorageService, accountService) {
+    function ($scope, $state, accountService) {
 
         $scope.user = accountService.currentUser.data;
+        console.log($scope.user);
 
         $scope.logout = function () {
-            accountService.logout().then(function () {
-                localStorageService.remove('token');
-                localStorageService.remove('user');
-                state.authorized = false;
-
+            accountService.logout().then(function() {
                 $state.go('home'); 
             }).catch(function(err) {
                 alert("There was a problem logging out.");

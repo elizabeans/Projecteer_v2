@@ -3,16 +3,16 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var jwt = require("jsonwebtoken");
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var dotenv = require('dotenv');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 // require routes modules defined in routes directory
-var index = require('./routes/index');
-var account = require('./routes/account');
-var api = require('./routes/api');
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -42,22 +42,30 @@ db.once('open', function (callback) {
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
+app.use(require('express-session')({
+    secret: 'JOFEW0932480CNMVWS7SDVJHE321',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 600000 } // session expires in 10 minutes
+}));
+app.use(cookieParser('JOFEW0932480CNMVWS7SDVJHE321'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-    next();
-});
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'app')));
 
 // use the routes we defined in the routes directory
-app.use('/', index);
-app.use('/account', account);
-app.use('/projecteerAPI', api);
+app.use('/', routes);
+//app.use('/users', users);
+
+// passport config
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 // All other routes should redirect to the index.html
 app.route('/*').get((req, res) => {

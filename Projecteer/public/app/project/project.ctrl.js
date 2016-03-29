@@ -4,14 +4,14 @@
     '$http',
     '$state',
     'ROOT_URL',
-    'ProjectService',
+    'ProjectResource',
     'AccountService',
-    function ($scope, $http, $state, ROOT_URL, ProjectService, AccountService) {
+    function ($scope, $http, $state, ROOT_URL, ProjectResource, AccountService) {
         
         $scope.project = {};
         
         $scope.createProject = function (newProjectData) {
-            ProjectService.createProject(newProjectData).$promise
+            ProjectResource.createProject(newProjectData).$promise
                 .then(function (data) {
                 alert('Project created');
             }).catch(function (err) {

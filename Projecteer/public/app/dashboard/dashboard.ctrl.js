@@ -1,11 +1,11 @@
 ﻿angular.module('projecteer')
     .controller('DashboardController', [
     '$scope',
-    'ProjectService',
-    function ($scope, ProjectService) {
+    'ProjectResource',
+    function ($scope, ProjectResource) {
         function activate() {
             
-            ProjectService.getProjects().$promise
+            ProjectResource.getProjects().$promise
                     .then(function (projects) {
                 $scope.projects = projects;
             });
