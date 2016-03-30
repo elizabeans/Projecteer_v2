@@ -15,7 +15,8 @@ router.post('/register', function (req, res) {
                     first_name: req.user.first_name,
                     last_name: req.user.last_name,
                     email: req.user.email,
-                    username: req.user.username
+                    username: req.user.username,
+                    expires: req.session.cookie._expires
                 }
             });
         });

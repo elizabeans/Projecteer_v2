@@ -4,7 +4,9 @@ var Schema = mongoose.Schema;
 var Project = new Schema({
     name: String,
     description: String,
-    createdDate: Date
+    createdDate: Date,
+    createdBy: String, 
+    tags: [String]
 });
 
 // When creating a new project, save the current date

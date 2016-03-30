@@ -5,6 +5,7 @@
     '$state',
     'ProjectService',
     'AccountService',
+    'TagService',
     function ($rootScope, $scope, $state, projectService, accountService) {
 
         $scope.user = $rootScope.currentUser;
@@ -17,16 +18,20 @@
             });
         };
 
-        $scope.project = {};
+        $scope.project = {
+            tags: []
+        };
         
         $scope.createProject = function (newProjectData) {
+            newProjectData.createdBy = $rootScope.currentUser.username;
+
             projectService.createProject(newProjectData).$promise
-                .then(function (data) {
+            .then(function (data) {
                 alert('Project created');
+
             }).catch(function (err) {
                 alert('Something went wrong when trying to create the new project!');
             });
         };
-
     }]
 );

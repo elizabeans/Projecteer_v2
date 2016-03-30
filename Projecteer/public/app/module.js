@@ -3,6 +3,7 @@
     'ngCookies',
     'ngSanitize',
     'ngRoute',
+    'ngTagsInput',
     'http-auth-interceptor',
     'ui.router', 
 ]);

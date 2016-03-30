@@ -1,12 +1,24 @@
 ﻿var express = require('express');
-var passport = require('passport');
+var async = require('async');
 var auth = require('./helper/auth');
 var Project = require('../models/project');
 var router = express.Router();
 
-router.get('/all', function (req, res) {
+var filterTags = function(req, res, next) {
 
-	console.log("IN PROJECTS");
+	var tags = [];
+
+	async.each(req.body.tags, function(item, callback) {
+		tags.push(item.text);
+		callback();	
+	}, function() {
+
+		req.body.tags = tags;
+		next();
+	});
+};
+
+router.get('/all', function (req, res) {
 
 	Project.find({}, function(err, projects) {
 		res.status(200).send(projects);
@@ -14,10 +26,8 @@ router.get('/all', function (req, res) {
 
 });
 
-router.post('/', function (req, res) {
+router.post('/', filterTags, function (req, res) {
 
-	console.log(req.body);
-	
 	var newProject = new Project(req.body);
 
 	newProject.save(function(err) {

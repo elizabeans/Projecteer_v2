@@ -9,9 +9,16 @@
                         <small>Posted {{ project.createdDate | date : 'shortDate'}} at {{project.createdDate | date : 'shortTime'}}</small>
 
                         <h1 class="tag-title">{{ project.name }}</h1>
+                        
                         <hr />
+                        
                         <p>{{ project.description }}</p>
+                        
                         <br />
+                        
+                        <span ng-repeat="tag in project.tags">{{ tag }}</span>
+
+                        <p>{{ project.createdBy }}</p>
                         <a href="ppc.html" class="btn btn-block btn-primary">Learn more</a>
                     </div>
                 </div>

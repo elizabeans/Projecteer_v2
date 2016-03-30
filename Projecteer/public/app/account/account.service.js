@@ -66,7 +66,19 @@
             },
 
             registerAccount: function (newAccountData) {
-                return resource.registerAccount(newAccountData);
+                var deferred = $q.defer();
+                
+                resource.registerAccount(newAccountData).$promise.then(function (resp) {
+                    
+                    $rootScope.currentUser = resp.data;
+                    $cookies.putObject('user', resp.data, { expires: new Date(resp.data.expires) });
+                    deferred.resolve(resp.data);
+
+                }).catch(function (err) {
+                    deferred.reject(err);
+                });
+
+                return deferred.promise;
             }
         };
     }]

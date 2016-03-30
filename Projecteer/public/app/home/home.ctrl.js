@@ -17,7 +17,7 @@
         $scope.newAccount = {};  
         $scope.registerAccount = function (newAccount) {
             
-            accountService.registerAccount(newAccount).$promise.then(function (resp) {
+            accountService.registerAccount(newAccount).then(function (resp) {
                 $state.go('app.dashboard');
             }).catch(function (err) {
                 alert(err);
