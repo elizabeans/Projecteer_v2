@@ -11,8 +11,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 // require routes modules defined in routes directory
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var index = require('./routes/index');
+var account = require('./routes/account');
+var project = require('./routes/project');
 
 var app = express();
 
@@ -46,20 +47,27 @@ app.use(require('express-session')({
     secret: 'JOFEW0932480CNMVWS7SDVJHE321',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 600000 } // session expires in 10 minutes
+    cookie: { maxAge: 6000000 } // session expires in 10 minutes
 }));
 app.use(cookieParser('JOFEW0932480CNMVWS7SDVJHE321'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+/*app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+    next();
+ });*/
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'app')));
 
 // use the routes we defined in the routes directory
-app.use('/', routes);
-//app.use('/users', users);
+app.use('/', index);
+app.use('/account', account);
+app.use('/project', project);
 
 // passport config
 var Account = require('./models/account');

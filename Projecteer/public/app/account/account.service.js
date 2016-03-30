@@ -1,16 +1,14 @@
 ﻿angular.module('projecteer')
 
     .factory('AccountService', [
+    '$rootScope',
     '$resource',
     '$q',
+    '$cookies',
     'ROOT_URL',
-    function ($resource, $q, ROOT_URL) {
+    function ($rootScope, $resource, $q, $cookies, ROOT_URL) {
         
-        this.currentUser = {
-            data: {}
-        };
-
-        var that = this;
+        $rootScope.currentUser = $cookies.getObject('user');
 
         var resource = $resource(
             ROOT_URL + '/account', {}, {
@@ -21,7 +19,7 @@
                 },
                 
                 logout: {
-                    url: ROOT_URL + '/logout',
+                    url: ROOT_URL + '/account/logout',
                     method: 'GET'
                 },
 
@@ -33,15 +31,15 @@
         );
 
         return {
-            currentUser: this.currentUser,
 
             login: function (user) {
                 
                 var deferred = $q.defer();
                 
                 resource.login(user).$promise.then(function (resp) {
-                    console.log(resp);
-                    that.currentUser.data = resp.data;
+
+                    $rootScope.currentUser = resp.data;
+                    $cookies.putObject('user', resp.data, { expires: new Date(resp.data.expires) });
                     deferred.resolve(resp.data);
 
                 }).catch(function (err) {
@@ -55,7 +53,9 @@
                 var deferred = $q.defer();
                 
                 resource.logout().$promise.then(function (resp) {
-                    that.currentUser.data = {};
+                    
+                    $rootScope.currentUser = null;
+                    $cookies.remove('user');
                     deferred.resolve(resp);
 
                 }).catch(function (err) {
