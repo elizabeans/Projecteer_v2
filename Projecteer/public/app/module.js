@@ -41,10 +41,10 @@ angular.module('projecteer').config(function ($stateProvider, $urlRouterProvider
             abstract: true, 
             template: '<ui-view>'
         
-        }).state('app.project.create', {
-            url: '/new', 
-            templateUrl: '/app/project/project.html', 
-            controller: 'ProjectCreateController'
+        }).state('app.profile', {
+            url: '/profile',
+            templateUrl: '/app/profile/profile.html',
+            controller: 'ProfileController'
         });
 });
 
