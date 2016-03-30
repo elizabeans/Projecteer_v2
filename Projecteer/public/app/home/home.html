@@ -1,74 +1,92 @@
-﻿<div style="background-color: #6DBAB4">
-    <div style="background-color: #6DBAB4" align="center">
-        <img src="../../assets/images/head-image.jpg" />
-    </div>
+﻿<div style="background-color: #6DBAB4" align="center">
+    <img src="../../assets/images/head-image.jpg" />
+</div>
+<div id="landing" class="row pull-left">
 
-    <div class="container pull-right center">
+        <div id="postyouridea" align="center" class="col-md-4">
+            <div>
+                <img src="../../assets/images/idea.jpg" class="img-circle" height="250"/>
+                <h3>Post your ideas!</h3>
+            </div>
+        </div>
+        <div id="postyouridea" align="center" class="col-md-4">
+            <div>
+                <img src="../../assets/images/search.jpg" class="img-circle" height="250"/>
+                <h3>Find other projects!</h3>
+            </div>
+        </div>
+        <div id="postyouridea" align="center" class="col-md-4">
+            <div>
+                <img src="../../assets/images/team.jpg" class="img-circle" height="250"/>
+                <h3>Look for a team!</h3>
+            </div>
+        </div>
 
-        <div class="row">
-            <div class="col-md-4 col-md-offset-3">
-                <div class="panel panel-login">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="#" class="active" id="login-form-link">Login</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Register</a>
-                            </div>
+</div>
+<div class="container-fluid">
+    <div class="row pull-right col-lg-3">
+        <div>
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="active" id="login-form-link">Login</a>
                         </div>
-                        <hr>
+                        <div class="col-xs-6">
+                            <a href="#" id="register-form-link">Register</a>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form id="login-form" style="display: block;">
-                                    <div class="form-group">
-                                        <input type="text" name="username" tabindex="1" class="form-control" placeholder="Username" ng-model="user.username">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" tabindex="2" class="form-control" placeholder="Password" ng-model="user.password">
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                        <label for="remember"> Remember Me</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <button type="button" class="form-control btn btn-login" name="login-submit" ng-click="login(user)">Login</button>
-                                            </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="login-form" style="display: block;">
+                                <div class="form-group">
+                                    <input type="text" name="username" tabindex="1" class="form-control" placeholder="Username" ng-model="user.username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" tabindex="2" class="form-control" placeholder="Password" ng-model="user.password">
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                    <label for="remember"> Remember Me</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <button type="button" class="form-control btn btn-login" name="login-submit" ng-click="login(user)">Login</button>
                                         </div>
                                     </div>
-                                </form>
-                                <form id="register-form" style="display: none;">
-                                    <div class="form-group">
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" ng-model="newAccount.first_name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" ng-model="newAccount.last_name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" ng-model="newAccount.username">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" ng-model="newAccount.email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ng-model="newAccount.password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" ng-model="newAccount.confirm_password">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <button type="button" class="form-control btn btn-register" ng-click="registerAccount(newAccount)">Register</button>
-                                            </div>
+                                </div>
+                            </form>
+                            <form id="register-form" style="display: none;">
+                                <!-- <div class="form-group">
+                                    <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" ng-model="newAccount.first_name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" ng-model="newAccount.last_name">
+                                </div> -->
+                                <div class="form-group">
+                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" ng-model="newAccount.username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" ng-model="newAccount.email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ng-model="newAccount.password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" ng-model="newAccount.confirm_password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <button type="button" class="form-control btn btn-register" ng-click="registerAccount(newAccount)">Register</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
