@@ -1,3 +1,3 @@
 # Projecteer_v2
 
-![alt text](public/assets/images/head-image.jpg "Projecteer")
+![Projecteer image](Projecteer/public/assets/images/head-image.jpg "Projecteer")
