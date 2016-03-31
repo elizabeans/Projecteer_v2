@@ -1,17 +1,18 @@
 ﻿angular.module('projecteer')
     .controller('DashboardController', [
     '$scope',
+    '$state',
     'ProjectService',
-    function ($scope, projectService) {
-        function activate() {
-            
+    function ($scope, $state, projectService) {
+
+        function initializeDashboard() {
+
             projectService.getProjects().$promise
                 .then(function (projects) {
-                    console.log(projects);
                     $scope.projects = projects;
                 });
         };
         
-        activate();
+        initializeDashboard();
     }]
 );

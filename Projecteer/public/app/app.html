@@ -7,7 +7,6 @@
             </a>
         </div>
 
-
         <div class="btn-group pull-right navbar-btn">
             <button type="button" class="btn btn-warning"><i class="fa fa-bell"></i></button>
             <button type="button" class="btn btn-primary">{{user.first_name}} {{user.last_name}}</button>
@@ -22,50 +21,13 @@
                 <li><a href="#" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
-        <button id="nav-btn" data-toggle="modal" data-target="#projectModal" type="button" class="btn btn-success navbar-btn pull-right">Create Project</button>
+        <!-- <button id="nav-btn" data-toggle="modal" data-target="#projectModal" type="button" class="btn btn-success navbar-btn pull-right">Create Project</button> -->
+        <button ng-click="openCreateProjectModal()">Create Project</button>
     </div>
 </nav>
 <!-- End Navbar -->
 
-<!-- New Project Modal -->
-<!-- line modal -->
-<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Create a New Project</h3>
-            </div>
-            <div class="modal-body">
-
-                <!-- content goes here -->
-                <form>
-                    <div class="form-group">
-                        <label for="project-name">Project Name</label>
-                        <input type="text" class="form-control" id="project-name" placeholder="Enter project name" ng-model="project.name">
-                    </div>
-                    <div class="form-group">
-                        <label for="project-description">Description</label>
-                        <input type="text" class="form-control" id="project-description" ng-model="project.description">
-                    </div>
-                    <div class="form-group">
-                        <label>Roles</label>
-                        <tags-input ng-model="project.tags"></tags-input>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-success" data-action="save" role="button" ng-click="createProject(project)">Create</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End New Project Modal-->
+<!-- View below dashboard -->
 <div style="margin-top: 30px">
     <div ui-view></div>
 </div>

@@ -3,6 +3,11 @@ var passport = require('passport');
 var Account = require('../models/account');
 var router = express.Router();
 
+router.get('/isAuthenticated', function(req, res) {
+
+    res.status(401).send({ isAuthenticated: false} );
+});
+
 router.post('/register', function (req, res) {
     Account.register(new Account(req.body), req.body.password, function (err, account) {
         if (err) {
@@ -25,8 +30,6 @@ router.post('/register', function (req, res) {
 
 router.post('/login', passport.authenticate('local'), function (req, res) {
     console.log("User Logged in!");
-    console.log(req.session);
-    console.log("\n\n\n");
     console.log(req.user);
 
     res.status(200).send({

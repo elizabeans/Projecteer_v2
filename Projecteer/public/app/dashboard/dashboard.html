@@ -6,13 +6,15 @@
                 <div class="box">
                     <div class="box-content">
 
+                        <button ng-click="notifyUser()">Join this Project!</button>
+
                         <small>Posted {{ project.createdDate | date : 'shortDate'}} at {{project.createdDate | date : 'shortTime'}} by {{ project.createdBy }}</small>
 
                         <h1 class="tag-title">{{ project.name }}</h1>
                         
                         <hr />
                         
-                        <p id="description">{{ project.description | limitTo: 180}} ...</p>
+                        <p id="description">{{ project.description | limitTo: 180 }} ...</p>
                         
                         <br />
                         
@@ -22,7 +24,7 @@
 
                         <br/>
 
-                        <a href="ppc.html" class="btn btn-block btn-primary">Learn more</a>
+                        <a ui-sref="app.project({projectId: project._id })" class="btn btn-block btn-primary">View Contact</a>
                     </div>
                 </div>
             </div>

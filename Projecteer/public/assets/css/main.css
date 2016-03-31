@@ -1,0 +1,16 @@
+md-dialog{
+	max-height: 40%;
+	width: 50rem;
+}
+
+.error {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+
+#project-description {
+	resize: none;
+}

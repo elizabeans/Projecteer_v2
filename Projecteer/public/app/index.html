@@ -3,12 +3,16 @@
 <head>
     <title>Projecteer</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="../lib/angular-material/angular-material.css">
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
     <link href="../assets/css/navbar.css" rel="stylesheet" />
     <link href="../assets/css/dashboard.css" rel="stylesheet" />
     <link href="../assets/css/profile.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -27,15 +31,21 @@
     <script src="../lib/angular-animate/angular-animate.min.js"></script>
     <script src="../lib/angular-aria/angular-aria.min.js"></script>
     <script src="../lib/angular-messages/angular-messages.min.js"></script>
+    <script src="../lib/angular-material/angular-material.min.js"></script>
     <script src="../lib/ng-tags-input/ng-tags-input.min.js"></script>
-    
+    <script src="../lib/flow.js/dist/flow.min.js"></script>
+    <script src="../lib/ng-flow/dist/ng-flow.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
     <!-- Application -->
     <script src="module.js"></script>
     <script src="app.ctrl.js"></script>
     <script src="home/home.ctrl.js"></script>
     <script src="dashboard/dashboard.ctrl.js"></script>
     <script src="account/account.service.js"></script>
+    <script src="project/project-create-modal.ctrl.js"></script>
     <script src="project/project.service.js"></script>
+    <script src="project/project-details.ctrl.js"></script>
     <script src="project/tag.service.js"></script>
     <script src="profile/profile.ctrl.js"></script>
 </body>

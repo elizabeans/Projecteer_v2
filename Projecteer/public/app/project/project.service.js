@@ -6,6 +6,12 @@
 
             var resource = $resource(
                 ROOT_URL + '/project', {}, {
+
+                    getProject: {
+                        url: ROOT_URL + '/project/detail/:id',
+                        method: 'GET'
+                    },
+
                     getProjects: {
                         url: ROOT_URL + '/project/all',
                         method: 'GET',
@@ -23,6 +29,10 @@
             );
 
             return {
+                getProject: function (projectId) {
+                    return resource.getProject({ id: projectId });
+                },
+
                 getProjects: function () {
                     return resource.getProjects();
                 },

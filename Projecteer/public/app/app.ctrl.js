@@ -1,37 +1,37 @@
 ﻿angular.module('projecteer')
     .controller('AppController', [
-    '$rootScope',
-    '$scope',
-    '$state',
-    'ProjectService',
-    'AccountService',
-    'TagService',
-    function ($rootScope, $scope, $state, projectService, accountService) {
+        '$rootScope',
+        '$scope',
+        '$state',
+        '$mdDialog',
+        'AccountService',
+        'TagService',
+        function ($rootScope, $scope, $state, $mdDialog, accountService, tagService) {
 
-        $scope.user = $rootScope.currentUser;
+            $scope.viewModel = {
+                err: ""
+            };
 
-        $scope.logout = function () {
-            accountService.logout().then(function() {
-                $state.go('home'); 
-            }).catch(function(err) {
-                alert("There was a problem logging out.");
-            });
-        };
+            $scope.user = $rootScope.currentUser;
 
-        $scope.project = {
-            tags: []
-        };
-        
-        $scope.createProject = function (newProjectData) {
-            newProjectData.createdBy = $rootScope.currentUser.username;
+            $scope.logout = function () {
+                accountService.logout().then(function() {
+                    $state.go('home'); 
+                }).catch(function(err) {
+                    alert("There was a problem logging out.");
+                });
+            };
 
-            projectService.createProject(newProjectData).$promise
-            .then(function (data) {
-                alert('Project created');
+            $scope.openCreateProjectModal = function () {
+                $mdDialog.show({
+                    templateUrl: 'project/project-create-modal.html',
+                    controller: 'ProjectCreateController'
+                }).then(function(result) {
+                    $mdDialog.hide();   // regardless, actual decision is handled by modal controller;
+                }, function() {
+                    $mdDialog.hide();
+                });
 
-            }).catch(function (err) {
-                alert('Something went wrong when trying to create the new project!');
-            });
-        };
-    }]
-);
+            };
+        }]
+    );

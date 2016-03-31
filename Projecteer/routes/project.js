@@ -18,6 +18,21 @@ var filterTags = function(req, res, next) {
 	});
 };
 
+router.get('/detail/:id', function(req, res) {
+
+	Project.findOne({ _id: req.params.id }, function(err, project) {
+
+		if(err) {
+			res.status(404).send({
+				message: "No project with id " + req.params._id + " found."
+			});
+		}
+
+		res.status(200).send(project);
+	});
+
+});
+
 router.get('/all', function (req, res) {
 
 	Project.find({}, function(err, projects) {
