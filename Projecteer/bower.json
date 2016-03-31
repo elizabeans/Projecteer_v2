@@ -21,9 +21,8 @@
     "lodash": "~4.6.1",
     "angular-route": "^1.5.3",
     "ng-tags-input": "^3.0.0",
-    "flow.js": "2",
-    "ng-flow": "~2",
-    "angular-material": "^1.0.6"
+    "angular-material": "^1.0.6",
+    "ng-file-upload": "^12.0.4"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

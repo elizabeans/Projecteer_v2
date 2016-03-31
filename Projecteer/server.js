@@ -9,6 +9,7 @@ var dotenv = require('dotenv');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var mailer = require('express-mailer');
 
 // require routes modules defined in routes directory
 var index = require('./routes/index');
@@ -23,6 +24,20 @@ var io = require('socket.io')(server);
 
 // load env variables from .env file
 dotenv.load();
+
+// setup for emails
+mailer.extend(app, {
+    from: 'ProjecteerOriginAcademy@gmail.com',
+    host: 'smtp.gmail.com', // hostname
+    secureConnection: false, // true if you use SMTPS
+    port: 587,
+    transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+    auth: {
+        user: 'ProjecteerOriginAcademy@gmail.com',
+        pass: process.env.PASSWD
+    }
+});
+
 
 // view engine setup (not being used)
 app.set('views', path.join(__dirname, 'views'));
@@ -80,6 +95,27 @@ io.on('connection', function(socket) {
 app.use('/', index);
 app.use('/account', account);
 app.use('/project', project);
+
+/*app.post("/email", function(req, res, next) {
+
+    app.mailer.send({
+        template: 'email' // REQUIRED 
+        }, {
+            to: 'kanehchong@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field.  
+            subject: 'Someone sent you an email from your website!', // REQUIRED. 
+            message: { text: "HELLOOO" } // All additional properties are also passed to the template as local variables. 
+        }, function (err) {
+        if (err) {
+            // handle error 
+            console.log(err);
+            res.send('There was an error sending the email');
+            return;
+        }
+
+        res.status(200).send({});
+    });
+
+});*/
 
 // passport config
 var Account = require('./models/account');

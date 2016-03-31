@@ -6,7 +6,8 @@
     'ngTagsInput',
     'http-auth-interceptor',
     'ui.router', 
-    'ngMaterial'
+    'ngMaterial',
+    'ngFileUpload'
 ]);
 
 angular.module('projecteer')
@@ -30,7 +31,7 @@ angular.module('projecteer')
                 },
                 responseError: function (response) {
                     if (response && response.status === 401 || response.status === 404) {
-                        //$location.path('/home')
+                        $location.path('/home')
                     }
                     if (response && response.status >= 500) {
                     }
@@ -97,6 +98,8 @@ angular.module('projecteer')
         'AccountService',
         function ($rootScope, $q, $state, $timeout, $location, $cookies, accountService) {
 
+            accountService.getIsAuthenticated();
+
             // grabs user cookie to see if a user is already logged in
             var grabCookie = function(key) {
                 var deferred = $q.defer();
@@ -119,11 +122,11 @@ angular.module('projecteer')
               
             });
 
-            /*$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
                 if(toState.name !== 'home' || fromState.name !== 'home') {
                     accountService.getIsAuthenticated();
                 }  
-            });*/
+            });
         }]
     );

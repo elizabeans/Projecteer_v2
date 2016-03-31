@@ -5,7 +5,13 @@ var router = express.Router();
 
 router.get('/isAuthenticated', function(req, res) {
 
-    res.status(401).send({ isAuthenticated: false} );
+    console.log(req.session)
+    if(req.session.passport) {
+        res.status(200).send();
+    } else {
+        res.status(401).send();
+    };
+
 });
 
 router.post('/register', function (req, res) {

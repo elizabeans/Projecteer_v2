@@ -6,21 +6,16 @@
 					<div class="col-sm-6 col-md-4">
 						<img src="../../assets/images/user.png" class="img-rounded img-responsive" style="border: 1px solid #ebebeb; margin: 10px 0px;" />
 
-						<div flow-init="{target: '/upload'}"
-						     flow-files-submitted="$flow.upload()"
-						     flow-file-success="$file.msg = $message">
 
-						  <span class="btn btn-info" flow-btn>Upload File</span>
+						<form ng-app="fileUpload" name="form">
+							Upload a profile image! 
+							<div class="btn btn-info" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+							ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" 
+							ngf-resize="{width: 260, height: 260}">Select</div>
+							<button type="submit" class="btn btn-success" ng-click="submit()">Upload</button>
+						</form>
 
-						  <table>
-						    <tr ng-repeat="file in $flow.files">
-						        <td>{{$index+1}}</td>
-						        <td>{{file.name}}</td>
-						        <td>{{file.msg}}</td>
-						    </tr>
-						  </table>
-						</div>
-
+						Preview: <img ngf-thumbnail="file || '/thumb.jpg'" ngf-size="{width: 260, height: 260, quality: 1.0}">
 					</div>
 					<div class="col-sm-6 col-md-8">
                             <h1>{{ user.username }}</h1>

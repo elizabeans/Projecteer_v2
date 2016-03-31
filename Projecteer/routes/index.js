@@ -4,6 +4,7 @@ var auth = require('./helper/auth');
 var Account = require('../models/account');
 var Tag = require('../models/tags');
 var router = express.Router();
+var app = express();
 
 
 router.get('/', function (req, res) {
@@ -31,6 +32,5 @@ router.get('/app/authenticated', auth.ensureAuthenticated, function (req, res) {
     console.log("user is authenticated");
     res.status(200).send({});
 });
-
 
 module.exports = router;
