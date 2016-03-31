@@ -8,7 +8,7 @@ angular.module('projecteer')
 
             $scope.projectCreated = false;
 
-            $scope.charLimit = 300;
+            $scope.charLimit = 200;
 
             $scope.project = {
                 name: "",
