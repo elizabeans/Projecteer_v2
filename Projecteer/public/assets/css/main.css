@@ -1,6 +1,10 @@
 md-dialog{
-	max-height: 40%;
+	max-height: 60%;
 	width: 50rem;
+}
+
+#create-buttons {
+	margin-bottom: 20px;
 }
 
 .error {
@@ -13,4 +17,12 @@ md-dialog{
 
 #project-description {
 	resize: none;
+}
+
+#header {
+	margin-left: 15em;
+}
+
+#proj-details {
+	margin-left: 100px;
 }
