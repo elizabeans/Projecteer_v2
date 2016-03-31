@@ -1,9 +1,9 @@
 ﻿body {
-	background-color:#FC6E51;
+	background-color:#AFEAAA ;
 }
 
 .navbar {
-	background-color: #6DBAB4;
+	background-color: #ebebeb;
 }
 
 #nav-btn {
@@ -12,6 +12,15 @@
 
 .center {
     margin-top:50px;   
+}
+
+#postyouridea img {
+	border: 2px solid #ebebeb;
+	margin: 0em 4em;
+}
+
+#postyouridea h3 {
+	color: #555555;
 }
 
 .modal-header {
@@ -137,6 +146,6 @@
 	margin: 50px 100px;
 }
 
-#postyouridea img {
-	margin: 0em 4em;
+#userbtn {
+	background-color: #000;
 }
