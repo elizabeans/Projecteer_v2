@@ -5,7 +5,22 @@
 				<div class="row">
 					<div class="col-sm-6 col-md-4">
 						<img src="../../assets/images/user.png" class="img-rounded img-responsive" style="border: 1px solid; margin: 10px 0px;" />
-						<button class="btn btn-info" style="width: 18em;">Upload an image</button>
+
+						<div flow-init="{target: '/upload'}"
+						     flow-files-submitted="$flow.upload()"
+						     flow-file-success="$file.msg = $message">
+
+						  <span class="btn btn-info" flow-btn>Upload File</span>
+
+						  <table>
+						    <tr ng-repeat="file in $flow.files">
+						        <td>{{$index+1}}</td>
+						        <td>{{file.name}}</td>
+						        <td>{{file.msg}}</td>
+						    </tr>
+						  </table>
+						</div>
+
 					</div>
 					<div class="col-sm-6 col-md-8">
                             <h1>{{ user.username }}</h1>
@@ -16,9 +31,9 @@
                                 <br/>
                             </p>
                             <p>
-                                Description:
-                                <br/>
-                                Hi world. I'm Elizabeth. I like to code all the things. On the weekend, I like to eat brunch at The Cottage in La Jolla.
+                            Description:
+                            <br/>
+                                {{ user.info }}
                             </p>
                     </div>
 				</div>

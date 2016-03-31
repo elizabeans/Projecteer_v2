@@ -17,7 +17,11 @@ var project = require('./routes/project');
 
 var app = express();
 
-// load env variables
+// require socket.io dependency
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+// load env variables from .env file
 dotenv.load();
 
 // view engine setup (not being used)
@@ -44,25 +48,33 @@ db.once('open', function (callback) {
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(require('express-session')({
-    secret: 'JOFEW0932480CNMVWS7SDVJHE321',
+    secret: process.env.SECRET,
     resave: false,
+    rolling: true,
     saveUninitialized: false,
-    cookie: { maxAge: 6000000 } // session expires in 10 minutes
+    cookie: { maxAge: 900000 } // session expires in 10 minutes
 }));
-app.use(cookieParser('JOFEW0932480CNMVWS7SDVJHE321'));
+app.use(cookieParser(process.env.SECRET));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-/*app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-    next();
- });*/
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+//app.use(require('stylus').middleware(path.join(__dirname, 'public')));
+
+// serve public static code
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'app')));
+
+io.on('connection', function(socket) {
+    console.log('new connection', socket);
+
+    socket.on('add-customer', function(customer) {
+        io.emit('notification', {
+            message: 'new customer',
+            customer: customer
+        });
+    });
+});
 
 // use the routes we defined in the routes directory
 app.use('/', index);

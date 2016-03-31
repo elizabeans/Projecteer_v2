@@ -1,0 +1,6 @@
+<div>
+	<h2>Name: {{project.name}}</h1>
+	<h2>Created by: {{project.createdBy}}</h1>
+	<h2>Date: {{project.createdDate | date: 'short'}}</h1>
+	<h2>Tags: </h2><h4> ng-repeat="tag in project.tags">{{tag}}</p>
+</div>

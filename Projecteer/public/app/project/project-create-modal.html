@@ -1,0 +1,44 @@
+<md-dialog aria-label="Create a Project"  ng-cloak>
+    <form>
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Create a Project</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        
+        <md-dialog-content>
+        <div class="md-dialog-content">
+            <h3 ng-class="{'error': viewModel.err, 'success': projectCreated}">{{ viewModel.message }}</h1>
+            <div class="form-group">
+                <label for="project-name">Project Name</label>
+                <input type="text" class="form-control" id="project-name" placeholder="Enter project name" ng-model="project.name">
+            </div>
+            <div class="form-group">
+                <label for="project-description">Description</label><span class="pull-right">{{charLimit - project.description.length}} char left</span>
+                <textarea ng-trim="false" placeholder="Give us a small pitch on your project" maxlength="200" type="text" rows="4" class="form-control" id="project-description" ng-model="project.description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Tags</label>
+                <div ng-if="viewModel.err" class="error"> {{ viewModel.err }}</div>
+                <tags-input ng-model="project.tags"></tags-input>
+            </div>
+        </div>
+        </md-dialog-content>
+        
+        <md-dialog-actions layout="row">
+            <md-button ng-click="closeDialog()">
+                Cancel
+            </md-button>
+            <span flex></span>
+            <md-button aria-label="Create a Project" ng-click="createProject(project)" style="margin-right:20px;">
+                <span ng-if="!projectCreated && !viewModel.createInProgress">Create</span>
+                <span ng-if="projectCreated">Done</span>
+                <md-progress-circular ng-if="viewModel.createInProgress" md-mode="indeterminate"></md-progress-circular>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
