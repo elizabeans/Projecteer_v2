@@ -12,6 +12,10 @@
                     $scope.projects = projects;
                 });
         };
+
+        $scope.notifyUser = function () {
+            confirm("Would you like to join this project?");
+        };
         
         initializeDashboard();
     }]

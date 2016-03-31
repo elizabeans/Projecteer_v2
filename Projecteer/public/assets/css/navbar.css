@@ -1,12 +1,8 @@
-﻿body {
-	background-color:#AFEAAA ;
-}
-
-.navbar {
+﻿.navbar {
 	background-color: #ebebeb;
 }
 
-#nav-btn {
+.navbar-btn {
     margin: 8px 5px;
 }
 
@@ -43,8 +39,13 @@
 	border-right: 0;
 }
 
+#login {
+	z-index: 1;
+	position: absolute;
+}
+
 .panel-login {
-	margin-top: 10px;
+	margin-top: 100px;
 	margin-right: 150px;
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -143,5 +144,9 @@
 }
 
 #landing {
-	margin: 50px 100px;
+	margin: 50px 200px;
+}
+
+#landing img {
+	margin: 0px 100px;
 }

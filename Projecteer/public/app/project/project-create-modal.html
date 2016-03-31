@@ -34,7 +34,7 @@
                 Cancel
             </md-button>
             <span flex></span>
-            <md-button aria-label="Create a Project" ng-click="createProject(project)" style="margin-right:20px;">
+            <md-button id="create-buttons" class="md-warn md-raised" aria-label="Create a Project" ng-click="createProject(project)" style="margin-right:20px;">
                 <span ng-if="!projectCreated && !viewModel.createInProgress">Create</span>
                 <span ng-if="projectCreated">Done</span>
                 <md-progress-circular ng-if="viewModel.createInProgress" md-mode="indeterminate"></md-progress-circular>

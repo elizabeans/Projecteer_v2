@@ -1,25 +1,29 @@
-﻿<div class="container">
+﻿<div class="background">
+<div class="container">
     <div class="row">
         <h1 class="text-center">Projects</h1>
         <div class="row">
             <div class="col-md-4 text-center" ng-repeat="project in projects | orderBy:'-createdDate'">
                 <div class="box">
                     <div class="box-content">
-
-                        <button ng-click="notifyUser()">Join this Project!</button>
-
-                        <small>Posted {{ project.createdDate | date : 'shortDate'}} at {{project.createdDate | date : 'shortTime'}} by {{ project.createdBy }}</small>
-
-                        <h1 class="tag-title">{{ project.name }}</h1>
-                        
+                        <div class="box-header">
+                            <span id="created" class="pull-left"><small>Posted {{ project.createdDate | date : 'shortDate'}} at {{project.createdDate | date : 'shortTime'}}</small>
+                            <br/>
+                            <small>by {{ project.createdBy }}</small>
+                            </span>
+                            <button id="join" class="btn btn-warning pull-right" ng-click="notifyUser()">Join</button>
+                        </div>
+                        <div class="box-body">
+                        <h1 class="box-title">{{ project.name }}</h1>
+    
                         <hr />
                         
-                        <p id="description">{{ project.description | limitTo: 180 }} ...</p>
+                        <p id="description">{{ project.description }}</p>
                         
                         <br />
-                        
-                        <div>
-                            <center><span id="project-tag" ng-repeat="tag in project.tags"> {{ tag }} </span></center>
+                        </div>
+                        <div id="tags">
+                            <span id="project-tag" ng-repeat="tag in project.tags"> {{ tag }} </span>
                         </div>
 
                         <br/>
@@ -31,6 +35,6 @@
         </div>
     </div>
 </div>
+</div>
 
-<br/>
 <!--<div class="container pull-right"><h3>{{projects | json}}</h3></div>-->
