@@ -1,10 +1,18 @@
 ﻿<!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#/app/dashboard">
                 <i class="fa fa-home"></i> Projecteer
             </a>
+        
+            <div ng-repeat="notification in notifications | orderBy:'-createdDate'">
+
+                <p>FROM: {{notification.fromUsername}}</p>
+                <p>MESSAGE: {{notification.message}}</p>
+                <p>SENT DATE: {{notification.createdDate}}</p>
+                <br/>
+            </div>
         </div>
 
         <div class="btn-group pull-right navbar-btn">

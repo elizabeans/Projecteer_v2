@@ -21,7 +21,6 @@ angular.module('projecteer')
 
                     if ($scope.userProjects[i]._id === project.id) {
                         $scope.userProjects.splice(i, 1);
-                        console.log($scope.userProjects[i]);
                     }
                 }
             });

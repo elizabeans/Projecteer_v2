@@ -12,7 +12,7 @@
                             <br/>
                             <small>by {{ project.createdBy }}</small>
                             </span>
-                            <button id="join" class="btn btn-warning pull-right" ng-click="notifyUser()">Join</button>
+                            <button ng-if="project.createdBy !== user.username" id="join" class="btn btn-warning pull-right" ng-click="openNotificationModal(project)">Join</button>
                         </div>
                         <div class="box-body">
                         <h1 class="box-title">{{ project.name }}</h1>
@@ -29,7 +29,7 @@
 
                         <br/>
 
-                        <a ui-sref="app.project({projectId: project._id })" class="btn btn-block btn-primary">Learn More</a>
+                        <a ng-if="project.createdBy !== user.username" ui-sref="app.project({projectId: project._id })" class="btn btn-block btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>

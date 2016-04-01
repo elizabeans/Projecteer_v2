@@ -4,15 +4,34 @@
         '$scope',
         '$state',
         '$mdDialog',
+        'Pusher',
         'AccountService',
+        'NotificationService',
         'TagService',
-        function ($rootScope, $scope, $state, $mdDialog, accountService, tagService) {
+        function ($rootScope, $scope, $state, $mdDialog, Pusher, accountService, notificationService, tagService) {
+
+            $scope.notifications = [];
 
             $scope.viewModel = {
                 err: ""
             };
 
             $scope.user = $rootScope.currentUser;
+
+            Pusher.subscribe('notification', 'added', function (notification) {
+
+                if(notification.toUsername === $rootScope.currentUser.username) {
+                    $scope.notifications.push(notification);
+                }
+            });
+
+            var getUserNotifications = function() {
+                notificationService.getUserNotifications($rootScope.currentUser.username).$promise
+                    .then(function(notifications) {
+                        $scope.notifications = notifications;
+                        console.log(notifications);
+                    });
+            };
 
             $scope.logout = function () {
                 accountService.logout().then(function() {
@@ -33,5 +52,7 @@
                 });
 
             };
+
+            getUserNotifications();
         }]
     );

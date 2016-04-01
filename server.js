@@ -15,6 +15,7 @@ var mailer = require('express-mailer');
 var index = require('./routes/index');
 var account = require('./routes/account');
 var project = require('./routes/project');
+var notification = require('./routes/notification');
 
 var app = express();
 
@@ -79,6 +80,7 @@ app.use(express.static(path.join(__dirname, 'public', 'app')));
 app.use('/', index);
 app.use('/account', account);
 app.use('/project', project);
+app.use('/notification', notification);
 
 /*app.post("/email", function(req, res, next) {
 

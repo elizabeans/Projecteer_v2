@@ -1,0 +1,36 @@
+<md-dialog aria-label="Notify"  ng-cloak>
+    <form>
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Join Project: <strong>{{project.name}}</strong></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeDialog()">
+                <md-icon aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        
+        <md-dialog-content>
+        <div class="md-dialog-content">
+            <h3 ng-class="{'error': viewModel.err, 'success': notifySent}">{{ viewModel.message }}</h1>
+
+            <div class="form-group">
+                <label for="project-description">Message</label><span class="pull-right">{{charLimit - message.length}} char left</span>
+                <textarea ng-trim="false" placeholder="Say something that shows your interest in the project" maxlength="400" type="text" rows="4" class="form-control" id="message" ng-model="message"></textarea>
+            </div>
+        </div>
+        </md-dialog-content>
+        
+        <md-dialog-actions layout="row">
+            <md-button ng-click="closeDialog()">
+                Cancel
+            </md-button>
+            <span flex></span>
+            <md-button id="notify-buttons" class="md-warn md-raised" aria-label="Notify" ng-click="notifyUser(project)" style="margin-right:20px;">
+                <span ng-if="!notifySent && !viewModel.notifyInProgress">Notify</span>
+                <span ng-if="notifySent">Done</span>
+                <md-progress-circular ng-if="viewModel.notifyInProgress" md-mode="indeterminate"></md-progress-circular>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
