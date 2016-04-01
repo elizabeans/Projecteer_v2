@@ -18,6 +18,12 @@
                         isArray: true
                     },
 
+                    getUserProjects: {
+                        url: ROOT_URL + '/project/all/:userId',
+                        method: 'GET',
+                        isArray: true
+                    },
+
                     createProject: {
                         method: 'POST'
                     },
@@ -35,6 +41,10 @@
 
                 getProjects: function () {
                     return resource.getProjects();
+                },
+
+                getUserProjects: function (userId) {
+                    return resource.getProjects(userId);
                 },
 
                 createProject: function (newProjectData) {

@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mailer = require('express-mailer');
+var Pusher = require('pusher');
 
 // require routes modules defined in routes directory
 var index = require('./routes/index');
@@ -37,7 +38,6 @@ mailer.extend(app, {
         pass: process.env.PASSWD
     }
 });
-
 
 // view engine setup (not being used)
 app.set('views', path.join(__dirname, 'views'));

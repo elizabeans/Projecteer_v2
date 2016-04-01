@@ -7,7 +7,8 @@
     'http-auth-interceptor',
     'ui.router', 
     'ngMaterial',
-    'ngFileUpload'
+    'ngFileUpload',
+    'doowb.angular-pusher'
 ]);
 
 angular.module('projecteer')
@@ -18,7 +19,8 @@ angular.module('projecteer')
         '$q', 
         '$rootScope', 
         '$location',
-        function ($q, $rootScope, $location) {
+        '$timeout',
+        function ($q, $rootScope, $location, $timeout) {
             return {
                 request: function (config) {
                     return config || $q.when(config);
@@ -31,7 +33,12 @@ angular.module('projecteer')
                 },
                 responseError: function (response) {
                     if (response && response.status === 401 || response.status === 404) {
-                        $location.path('/home')
+                        
+                        $timeout(function() {
+                            $location.path('#/home');
+                        });
+
+                        return $q.reject(response);
                     }
                     if (response && response.status >= 500) {
                     }
@@ -44,6 +51,15 @@ angular.module('projecteer')
     .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('httpErrorInterceptor');    
     }]);
+
+angular.module('projecteer')
+    .config(['PusherServiceProvider',
+        function(PusherServiceProvider) {
+        PusherServiceProvider
+            .setToken('24242171b74120385a82')
+            .setOptions({});
+    }
+]);
 
 angular.module('projecteer')
     .config([
@@ -97,8 +113,6 @@ angular.module('projecteer')
         '$cookies',
         'AccountService',
         function ($rootScope, $q, $state, $timeout, $location, $cookies, accountService) {
-
-            accountService.getIsAuthenticated();
 
             // grabs user cookie to see if a user is already logged in
             var grabCookie = function(key) {
