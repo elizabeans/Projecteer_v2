@@ -1,41 +1,41 @@
 ﻿<div class="background">
-<div class="container">
-    <div class="row">
-        <h1 class="text-center">Projects</h1>
+    <div class="container">
         <div class="row">
-            <div class="col-md-4 text-center" ng-repeat="project in projects | orderBy:'-createdDate'">
-                <div class="box">
-                    <div class="box-content">
+            <h1 class="text-center">Projects</h1>
+            <div class="row">
+                <div class="col-md-4 text-center" ng-repeat="project in projects | orderBy:'-createdDate'">
+                    <div class="box">
+                        <div class="box-content">
 
-                        <div class="box-header">
-                            <span id="created" class="pull-left"><small>Posted {{ project.createdDate | date : 'shortDate'}} at {{project.createdDate | date : 'shortTime'}}</small>
+                            <div class="box-header">
+                                <span id="created" class="pull-left"><small>Posted {{ project.createdDate | date : 'shortDate'}} at {{project.createdDate | date : 'shortTime'}}</small>
+                                <br/>
+                                <small>by {{ project.createdBy }}</small>
+                                </span>
+                                <button ng-if="project.createdBy !== user.username" id="join" class="btn btn-warning pull-right" ng-click="openNotificationModal(project)">Join</button>
+                            </div>
+                            <div class="box-body">
+                            <h1 class="box-title">{{ project.name }}</h1>
+        
+                            <hr />
+                            
+                            <p id="description">{{ project.description }}</p>
+                            
+                            <br />
+                            </div>
+                            <div id="tags">
+                                <span id="project-tag" ng-repeat="tag in project.tags"> {{ tag }} </span>
+                            </div>
+
                             <br/>
-                            <small>by {{ project.createdBy }}</small>
-                            </span>
-                            <button ng-if="project.createdBy !== user.username" id="join" class="btn btn-warning pull-right" ng-click="openNotificationModal(project)">Join</button>
-                        </div>
-                        <div class="box-body">
-                        <h1 class="box-title">{{ project.name }}</h1>
-    
-                        <hr />
-                        
-                        <p id="description">{{ project.description }}</p>
-                        
-                        <br />
-                        </div>
-                        <div id="tags">
-                            <span id="project-tag" ng-repeat="tag in project.tags"> {{ tag }} </span>
-                        </div>
 
-                        <br/>
-
-                        <a ng-if="project.createdBy !== user.username" ui-sref="app.project({projectId: project._id })" class="btn btn-block btn-primary">Learn More</a>
+                            <a ng-if="project.createdBy !== user.username" ui-sref="app.project({projectId: project._id })" class="btn btn-block btn-primary">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!--<div class="container pull-right"><h3>{{projects | json}}</h3></div>-->
