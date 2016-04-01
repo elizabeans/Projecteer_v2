@@ -96,3 +96,7 @@ md-dialog{
 .background {
 	margin-top: 100px;
 }
+
+#home {
+	overflow: hidden;
+}
