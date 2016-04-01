@@ -19,7 +19,7 @@
                     },
 
                     getUserProjects: {
-                        url: ROOT_URL + '/project/all/:userId',
+                        url: ROOT_URL + '/project/user/:username',
                         method: 'GET',
                         isArray: true
                     },
@@ -30,6 +30,11 @@
 
                     update: {
                         method: 'PUT'
+                    },
+
+                    deleteProject: {
+                        url: ROOT_URL + '/project/user/:id',
+                        method: 'DELETE'
                     }
                 }
             );
@@ -43,12 +48,20 @@
                     return resource.getProjects();
                 },
 
-                getUserProjects: function (userId) {
-                    return resource.getProjects(userId);
+                getUserProjects: function (username) {
+                    return resource.getUserProjects({ username: username });
                 },
 
                 createProject: function (newProjectData) {
                     return resource.createProject(newProjectData);
+                },
+
+                updateProject: function (updatedProjectData) {
+                    return resource.updateProject(updatedProjectData);
+                },
+
+                deleteProject: function (projectId) {
+                    return resource.deleteProject({ id: projectId });
                 }
             };
         }]

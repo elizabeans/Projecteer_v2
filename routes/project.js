@@ -49,14 +49,12 @@ router.get('/all', function (req, res) {
 
 });
 
-router.get('/all/:userId', function (req, res) {
+router.get('/user/:username', function (req, res) {
 
-	Project.find({ createdBy: userId }, function(err, projects) {
+	Project.find({ createdBy: req.params.username }, function(err, projects) {
 
 		if(err) {
-			res.status(200).send({
-				err: "None found"
-			});
+			res.status(200).send([]);
 		}
 
 		res.status(200).send(projects);
@@ -76,20 +74,23 @@ router.post('/', filterTags, function (req, res) {
 
 		// tell Pusher to trigger an 'updated' event on the 'items' channel
 		// add pass the changed item to the event
-		pusher.trigger('projects', 'updated', newProject);
+		pusher.trigger('projects', 'added', newProject);
+		pusher.trigger('userProjects', 'added', newProject);
 
-		console.log("Project created successfully");
-		console.log(newProject);
 		res.status(200).send(newProject);
 	});
 });
 
-router.delete('/:id', function(req, res) {
+router.delete('/user/:id', function(req, res) {
 
-	Project.findOne({ "_id": req.params.id }).remove().exec( function(err) {
+	console.log(req.params.id);
+
+	Project.findOne({ _id: req.params.id }).remove(function(err, removed) {
 		if(err) {
-			console.log(err);
+			res.status(500).send(err);
 		}
+
+		pusher.trigger('userProjects', 'deleted', { id: req.params.id } );
 
 		res.status(200).send();
 	});

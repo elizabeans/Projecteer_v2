@@ -8,15 +8,8 @@
 
         $scope.projects = [];
 
-        Pusher.subscribe('projects', 'updated', function (project) {
-
-        // A project was updated. Find it in our list and update it.
-        for (var i = 0; i < $scope.projects.length; i++) {
-            if ($scope.projects[i].id === project.id) {
-                $scope.projects[i] = project;
-                    break;
-                }
-            }
+        Pusher.subscribe('projects', 'added', function (project) {
+                $scope.projects.push(project);
         });
 
 
@@ -26,6 +19,7 @@
                 .then(function (projects) {
                     $scope.projects = projects;
                 });
+
         };
 
         $scope.notifyUser = function () {

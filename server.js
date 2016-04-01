@@ -10,7 +10,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mailer = require('express-mailer');
-var Pusher = require('pusher');
 
 // require routes modules defined in routes directory
 var index = require('./routes/index');
@@ -18,10 +17,6 @@ var account = require('./routes/account');
 var project = require('./routes/project');
 
 var app = express();
-
-// require socket.io dependency
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
 
 // load env variables from .env file
 dotenv.load();
@@ -67,7 +62,7 @@ app.use(require('express-session')({
     resave: false,
     rolling: true,
     saveUninitialized: false,
-    cookie: { maxAge: 900000 } // session expires in 10 minutes
+    cookie: { maxAge: 99999999 } // session expire time in millisec
 }));
 app.use(cookieParser(process.env.SECRET));
 app.use(bodyParser.json());
@@ -79,17 +74,6 @@ app.use(passport.session());
 // serve public static code
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'app')));
-
-io.on('connection', function(socket) {
-    console.log('new connection', socket);
-
-    socket.on('add-customer', function(customer) {
-        io.emit('notification', {
-            message: 'new customer',
-            customer: customer
-        });
-    });
-});
 
 // use the routes we defined in the routes directory
 app.use('/', index);

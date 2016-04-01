@@ -1,0 +1,32 @@
+<md-dialog aria-label="Delete a Project"  ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Delete {{project.name}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <md-icon aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h3 ng-class="{'error': viewModel.err, 'success': projectDeleted}">{{ viewModel.message }}</h1>
+                <h4> This action is irreversible and can not be undone. Are you sure you want to delete this project?</h4>
+            </div>
+        </md-dialog-content>
+        
+        <md-dialog-actions layout="row">
+            <md-button ng-click="closeDialog()">
+                Cancel
+            </md-button>
+            <span flex></span>
+            <md-button id="delete-button" class="md-warn md-raised" aria-label="Delete a Project" ng-click="deleteProject(project)" style="margin-right:20px;">
+                <span ng-if="!projectDeleted && !viewModel.deleteInProgress">Delete</span>
+                <span ng-if="projectDeleted">Done</span>
+                <md-progress-circular ng-if="viewModel.deleteInProgress" md-mode="indeterminate"></md-progress-circular>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
