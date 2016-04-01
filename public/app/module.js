@@ -12,7 +12,7 @@
 ]);
 
 angular.module('projecteer')
-    .value('ROOT_URL', 'http://localhost:1337');
+    .value('ROOT_URL', 'http://projecteer.herokuapp.com');
 
 angular.module('projecteer')
     .factory('httpErrorInterceptor', [
