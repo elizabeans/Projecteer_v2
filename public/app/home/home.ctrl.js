@@ -13,14 +13,21 @@
                 alert(err);
             });
         };
-        
-        $scope.newAccount = {};  
+
+        $scope.newAccount = {};
         $scope.registerAccount = function (newAccount) {
-            
+
+            if(newAccount.password !== newAccount.confirm_password) {
+                $scope.error = "Passwords must match. Please try again";
+                return;
+            }
+
             accountService.registerAccount(newAccount).then(function (resp) {
                 $state.go('app.dashboard');
             }).catch(function (err) {
-                alert(err);
+                var errObj = JSON.parse(JSON.stringify(err));
+
+                $scope.error = errObj.data.message;
             });
         };
 

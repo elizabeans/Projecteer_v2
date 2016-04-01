@@ -19,7 +19,7 @@ router.post('/register', function (req, res) {
         if (err) {
             return res.status(500).send(err);
         }
-        
+
         passport.authenticate('local')(req, res, function () {
             res.status(200).send({
                 data : {

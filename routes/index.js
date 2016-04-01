@@ -21,7 +21,7 @@ router.get('/tags', function(req, res) {
 router.put('/tags', function(req, res) {
 
 	/*Tag.find({}, function(tags) {
-		
+
 		tags.push
 		var uniqueTags = 
 	});*/

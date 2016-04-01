@@ -1,11 +1,11 @@
 ﻿angular.module('projecteer', [
-    'ngResource', 
+    'ngResource',
     'ngCookies',
     'ngSanitize',
     'ngRoute',
     'ngTagsInput',
     'http-auth-interceptor',
-    'ui.router', 
+    'ui.router',
     'ngMaterial',
     'ngFileUpload',
     'doowb.angular-pusher'
@@ -16,8 +16,8 @@ angular.module('projecteer')
 
 angular.module('projecteer')
     .factory('httpErrorInterceptor', [
-        '$q', 
-        '$rootScope', 
+        '$q',
+        '$rootScope',
         '$location',
         '$timeout',
         function ($q, $rootScope, $location, $timeout) {
@@ -33,7 +33,7 @@ angular.module('projecteer')
                 },
                 responseError: function (response) {
                     if (response && response.status === 401 || response.status === 404) {
-                        
+
                         $timeout(function() {
                             $location.path('#/home');
                         });
@@ -49,7 +49,7 @@ angular.module('projecteer')
 
 angular.module('projecteer')
     .config(['$httpProvider', function ($httpProvider) {
-        $httpProvider.interceptors.push('httpErrorInterceptor');    
+        $httpProvider.interceptors.push('httpErrorInterceptor');
     }]);
 
 angular.module('projecteer')
@@ -69,38 +69,38 @@ angular.module('projecteer')
         function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('/home');
-            
+
             $stateProvider
                 .state('home', {
-                    url: '/home', 
-                    templateUrl: '/app/home/home.html', 
+                    url: '/home',
+                    templateUrl: '/app/home/home.html',
                     controller: 'HomeController'
 
                 }).state('register', {
-                    url: '/register', 
-                    templateUrl: '/app/register/register.html', 
+                    url: '/register',
+                    templateUrl: '/app/register/register.html',
                     controller: 'RegisterController'
 
                 }).state('app', {
-                    url: '/app', 
-                    templateUrl: '/app/app.html', 
+                    url: '/app',
+                    templateUrl: '/app/app.html',
                     controller: 'AppController'
-            
+
                 }).state('app.dashboard', {
-                    url: '/dashboard', 
-                    templateUrl: '/app/dashboard/dashboard.html', 
+                    url: '/dashboard',
+                    templateUrl: '/app/dashboard/dashboard.html',
                     controller: 'DashboardController'
 
                 }).state('app.project', {
-                    url: '/project/details/{projectId}', 
+                    url: '/project/details/{projectId}',
                     templateUrl: '/app/project/project-details.html',
                     controller: 'ProjectDetailsController'
-                
+
                 }).state('app.profile', {
                     url: '/profile',
                     templateUrl: '/app/profile/profile.html',
                     controller: 'ProfileController'
-                    
+
                 }).state('app.user-projects', {
                     url: '/user-projects',
                     templateUrl: '/app/user-projects/user-projects.html',
@@ -132,20 +132,20 @@ angular.module('projecteer')
 
                 return deferred.promise;
             };
-   
+
             grabCookie('user').then(function(user) {
                 // if user is already logged in, reassign rootscope user again
                 $rootScope.currentUser = user;
 
             }).catch(function() {
-              
+
             });
 
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
                 if(toState.name !== 'home' || fromState.name !== 'home') {
                     //accountService.getIsAuthenticated();
-                }  
+                }
             });
         }]
     );
