@@ -76,7 +76,7 @@ router.post('/', filterTags, function (req, res) {
 
 		// tell Pusher to trigger an 'updated' event on the 'items' channel
 		// add pass the changed item to the event
-		//pusher.trigger('projects', 'updated', newProject);
+		pusher.trigger('projects', 'updated', newProject);
 
 		console.log("Project created successfully");
 		console.log(newProject);

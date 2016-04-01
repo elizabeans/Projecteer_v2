@@ -100,6 +100,11 @@ angular.module('projecteer')
                     url: '/profile',
                     templateUrl: '/app/profile/profile.html',
                     controller: 'ProfileController'
+                    
+                }).state('app.user-projects', {
+                    url: '/user-projects',
+                    templateUrl: '/app/user-projects/user-projects.html',
+                    controller: 'UserProjectsController'
                 });
     }]);
 
@@ -139,7 +144,7 @@ angular.module('projecteer')
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
                 if(toState.name !== 'home' || fromState.name !== 'home') {
-                    accountService.getIsAuthenticated();
+                    //accountService.getIsAuthenticated();
                 }  
             });
         }]
