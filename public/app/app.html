@@ -20,32 +20,31 @@
             </ul>
         </div>
         <button class="btn btn-danger navbar-btn pull-right" ng-click="openCreateProjectModal()">Create Project</button>
-        <!-- <button id="nav-btn" data-toggle="modal" data-target="#projectModal" type="button" class="btn btn-success navbar-btn pull-right">Create Project</button> -->
         <div class="dropdown pull-right navbar-btn">
-  <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-    <i class="glyphicon glyphicon-bell"></i>
-  </a>
-  
-  <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
-    
-    <div class="notification-heading"><h4 class="menu-title">Notifications</h4><h4 class="menu-title pull-right">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
-    </div>
-    <li class="divider"></li>
-    <div class="notifications-wrapper" ng-repeat="notification in notifications | orderBy:'-createdDate'">
-       <div class="notification-item">
-                <p>PROJECT: {{notification.projectName}}</p>
-                <p>FROM: {{notification.fromUsername}}</p>
-                <p>MESSAGE: {{notification.message}}</p>
-                <p>SENT DATE: {{notification.createdDate | date : 'shortDate' }} {{notification.createdDate | date : 'shortTime'}} </p>
-      </div>
-    
-    </div>
-    <li class="divider"></li>
-    <div class="notification-footer"><h4 class="menu-title">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4></div>
-  </ul>
-  
-    </div>
-        
+        <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+            <i class="glyphicon glyphicon-bell"></i>
+        </a>
+      
+        <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+            <div class="notification-heading"><h4 class="menu-title">Notifications</h4><h4 class="menu-title pull-right">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
+            </div>
+            <li class="divider"></li>
+            <div class="notifications-wrapper" ng-repeat="notification in notifications | orderBy:'-createdDate'">
+               <div class="notification-item">
+                        <p>PROJECT: {{notification.projectName}}</p>
+                        <p>FROM: {{notification.fromUsername}}</p>
+                        <p>MESSAGE: {{notification.message}}</p>
+                        <p>SENT DATE: {{notification.createdDate | date : 'shortDate' }} {{notification.createdDate | date : 'shortTime'}} </p>
+              </div>
+            
+            </div>
+            <li class="divider"></li>
+            <div class="notification-footer"><h4 class="menu-title">
+                View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
+            </div>
+        </ul>
+      
+        </div>
     </div>
 </nav>
 <!-- End Navbar -->
