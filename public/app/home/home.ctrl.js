@@ -28,6 +28,8 @@
                 var errObj = JSON.parse(JSON.stringify(err));
 
                 $scope.error = errObj.data.message;
+
+                console.log($scope.error);
             });
         };
 
