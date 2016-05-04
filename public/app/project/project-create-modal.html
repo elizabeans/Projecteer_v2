@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="project-description">Description</label><span class="pull-right">{{charLimit - project.description.length}} char left</span>
-                <textarea ng-trim="false" placeholder="Give us a small pitch on your project" maxlength="200" type="text" rows="4" class="form-control" id="project-description" ng-model="project.description"></textarea>
+                <textarea ng-trim="false" placeholder="Give us a small pitch on your project" maxlength="{{charLimit}}" type="text" rows="4" class="form-control" id="project-description" ng-model="project.description"></textarea>
             </div>
             <div class="form-group">
                 <label>Tags</label>

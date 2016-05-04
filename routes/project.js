@@ -45,6 +45,7 @@ router.get('/all', function (req, res) {
 
 	Project.find({}, function(err, projects) {
 		res.status(200).send(projects);
+
 	});
 
 });
@@ -72,7 +73,7 @@ router.post('/', filterTags, function (req, res) {
 			res.status(500).send(err)
 		};
 
-		// tell Pusher to trigger an 'updated' event on the 'items' channel
+		// tell Pusher to trigger an 'added' event on the 'items' channel
 		// add pass the changed item to the event
 		pusher.trigger('projects', 'added', newProject);
 		pusher.trigger('userProjects', 'added', newProject);

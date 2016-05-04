@@ -48,10 +48,6 @@ angular.module('projecteer')
                     templateUrl: 'project/project-delete-modal.html',
                     controller: 'ProjectDeleteController',
                     locals: { project: project }
-                }).then(function(result) {
-                    $mdDialog.hide();   // regardless, actual decision is handled by modal controller;
-                }, function() {
-                    $mdDialog.hide();
                 });
             };
 

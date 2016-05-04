@@ -45,12 +45,7 @@
                 $mdDialog.show({
                     templateUrl: 'project/project-create-modal.html',
                     controller: 'ProjectCreateController'
-                }).then(function(result) {
-                    $mdDialog.hide();   // regardless, actual decision is handled by modal controller;
-                }, function() {
-                    $mdDialog.hide();
                 });
-
             };
 
             getUserNotifications();

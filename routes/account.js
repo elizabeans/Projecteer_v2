@@ -27,6 +27,7 @@ router.post('/register', function (req, res) {
                     last_name: req.user.last_name,
                     email: req.user.email,
                     username: req.user.username,
+                    description: req.user.description,
                     expires: req.session.cookie._expires
                 }
             });
@@ -44,6 +45,7 @@ router.post('/login', passport.authenticate('local'), function (req, res) {
             last_name: req.user.last_name,
             email: req.user.email,
             username: req.user.username,
+            description: req.user.description,
             expires: req.session.cookie._expires
         }
     });
